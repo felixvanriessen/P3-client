@@ -1,24 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {Route, Switch} from 'react-router-dom'
+import LandingPage from './pages/main/LandingPage'
+import CarInfo from './pages/car/CarInfo';
+import UserProfile from './pages/user/UserProfile'
+import Login from './pages/auth/Login'
+import Signup from './pages/auth/Signup'
+require('dotenv').config()
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Switch>
+        <Route exact path='/' component={LandingPage}/>
+        <Route exact path='/car/:id' component={CarInfo} />
+        <Route exact path='/profile' component={UserProfile}/>
+        <Route exact path='/signup' component={Signup}/>
+        <Route exact path='/login' component={Login}/>
+      </Switch>
     </div>
   );
 }
