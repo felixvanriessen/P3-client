@@ -1,11 +1,11 @@
 @import './components/Nav.css';
+@import './pages/main//LandingPage.css';
+@import './layout/Layout.css';
+@import './pages/car/CarInfo.css';
+
 
 
 * {
   padding:0;
   margin:0;
-}
-
-.App {
-  text-align: center;
 }
