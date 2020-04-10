@@ -3,7 +3,7 @@ import qs from 'qs'
 
 const axiosauth = Axios.create({
    baseURL:'http://localhost:3004/auth/',
-   withCredentials:true,
+   withCredentials: true,
    headers:{
       "content-type":"application/x-www-form-urlencoded"
    }
@@ -15,6 +15,12 @@ export const login = (user) => {
       url:'login',
       data:qs.stringify(user)
    })
+   .then(response=> {
+      if (response.data.user){
+         setUser(response.data.user)
+      }
+      return response
+   })
 }
 
 export const signup = (user) => {
@@ -22,6 +28,9 @@ export const signup = (user) => {
       method:'POST',
       url:'signup',
       data:qs.stringify(user)
+   })
+   .then(response=>{
+      setUser(response.data)
    })
 }
 

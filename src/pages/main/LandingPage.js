@@ -10,13 +10,12 @@ export default class LandingPage extends Component {
       carsfound:[]
    }
    componentDidMount(){
-      axios.get(`http://localhost:3004/cars/all`)
+      axios.get(`http://localhost:3004/cars/all`, {withCredentials: true})
       .then(response=>{
          this.setState({
             cars:response.data,
             carsfound:response.data
          })
-         console.log(response.data)
       })
       .catch(err=>console.log(err))
    }

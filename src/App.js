@@ -6,7 +6,7 @@ import CarInfo from './pages/car/CarInfo';
 import UserProfile from './pages/user/UserProfile'
 import Login from './pages/auth/Login'
 import Signup from './pages/auth/Signup'
-require('dotenv').config()
+
 
 function App() {
   return (
