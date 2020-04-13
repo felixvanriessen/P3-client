@@ -2,13 +2,16 @@ import React, { Component } from 'react'
 import {getUser, logout, setUser} from '../../utils/auth'
 import UserLayout from '../../layout/UserLayout'
 import axios from 'axios'
-
+import {Route, Link, Switch} from 'react-router-dom'
+import PostCar from './PostCar'
 
 export default class UserProfile extends Component {
    state = {
       user:{},
-      useredit:{}
+      useredit:{},
+      link:'/profile/postcar'
    }
+
    componentDidMount(){
       let userprofile = getUser()
       if (userprofile) {
@@ -50,6 +53,8 @@ export default class UserProfile extends Component {
       })
    }
 
+   
+
    render() {
       return (
          <UserLayout logOut = {this.logOut}>
@@ -62,6 +67,12 @@ export default class UserProfile extends Component {
             </form>
             <h3>{this.state.useredit.email}</h3>
             <h3>{this.state.useredit.tel}</h3>
+            <Link to={this.state.link} onClick={()=>{
+               if (this.state.link === '/profile/postcar') this.setState({link:'/profile'})
+               else this.setState({link:'/profile/postcar'})
+            }}>POST NEW CAR</Link>
+            <Route path='/profile/postcar' component={PostCar} />
+            
          </UserLayout>
       )
    }

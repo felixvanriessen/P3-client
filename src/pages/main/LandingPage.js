@@ -22,7 +22,9 @@ export default class LandingPage extends Component {
 
    searchCars = (e) => {
       let foundcars = this.state.cars.filter(car=>{
-         if (car.name.toLowerCase().includes(e.target.value.toLowerCase())) return true
+         if (car.name){
+            if (car.name.toLowerCase().includes(e.target.value.toLowerCase())) return true
+         }
       })
       this.setState({
          carsfound:foundcars
