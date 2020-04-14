@@ -1,0 +1,148 @@
+.user-container {
+   min-height: 95vh;
+   background-image: linear-gradient(to bottom right, rgba(93, 174, 255, 0.315), rgba(255, 29, 146, 0.205));
+}
+
+.user-info {
+   width: 100%;
+   height: 300px;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-evenly;
+   align-items: center;
+}
+
+.user-info h2 {
+   color: dodgerblue;
+   font-size: 2rem;
+}
+
+.user-edit-form {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: space-evenly;
+   width: 100%;
+   height: 70%;
+}
+.user-edit-form p {
+   align-self: flex-start;
+   margin-left: 10%;
+   color: rgb(151, 151, 151);
+}
+
+.user-edit-form input {
+   text-align: center;
+   width: 80%;
+   height: 30px;
+   background:none;
+   border:none;
+   border-radius: 5px;
+   font-size: 1.2rem;
+   color:dodgerblue;
+}
+
+.user-edit-form input:focus {
+   background-color: white;
+   border: 2px solid dodgerblue;
+}
+
+.user-edit-form button {
+   background: none;
+   width: 80%;
+   height: 30px;
+   border-radius: 5px;
+   border: 2px solid rgb(180, 180, 180);
+   font-size: 1.2rem;
+   color:rgb(180,180,180);
+   transition: 0.6s;
+}
+
+.postcar-link {
+   text-decoration: none;
+   color: rgb(255, 255, 255);
+   text-align: center;
+   font-size: 1.4rem;
+   background-color: dodgerblue;
+   width: 200px;
+   border-radius: 5px;
+}
+
+.postcar-section {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   min-height: 50px;
+   justify-content: center;
+   background-color: #9DCEFF;
+   box-shadow: 0px 6px 10px rgb(161, 161, 161);
+}
+
+
+.postcar-section:focus {
+   background-color: dodgerblue;
+}
+.postcar-container {
+   width: 100%;
+   height: 250px;
+}
+
+.postcar-form {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: space-evenly;
+   width: 100%;
+   height: 100%;
+}
+
+.postcar-form input {
+   width: 80%;
+   height: 30px;
+   border:none;
+   border-radius: 5px;
+   text-align: center;
+}
+
+.postcar-form button {
+   width: 40%;
+   height: 30px;
+   background-color: white;
+   border:none;
+   border-radius: 5px;
+   background-color: dodgerblue;
+   color: white;
+   font-size: 1.4rem;
+
+}
+
+.cars-for-sale {
+   margin-top: 40px;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-evenly;
+   align-items: center;
+   min-height: 200px;
+}
+
+.cars-for-sale h3 {
+   color:rgb(124, 124, 124);
+}
+
+.car-for-sale {
+   width: 80%;
+   border-radius:5px;
+   background-color: rgb(228, 242, 255);
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+}
+
+.link-car {
+   display: flex;
+   justify-content: space-evenly;
+   align-items: center;
+   width: 70%;
+   text-decoration: none;
+   color: dodgerblue;
+}

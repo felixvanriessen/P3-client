@@ -4,38 +4,37 @@ import { getUser } from '../utils/auth'
 
 export default class NavGuest extends Component {
    state = {
-      auth:false
+      auth:false,
+      username:''
    }
    componentDidMount(){
       let user = getUser()
       console.log(user)
-      if (user) this.setState({auth:true})
+      if (user) this.setState({auth:true, username:user.username})
       else this.setState({auth:false})
    }
 
    dynamicNav = () => {
       if (this.state.auth){
          return (
-            <Link className='nav-link' to='profile'>
-            <h3>YOUR NAME</h3>
+            <Link className='nav-link' to='/profile'>
+            <h3>{this.state.username}</h3>
             </Link>
          )
       } else {
          return (
-            <div style={{display:'flex', justifyContent:'space-evenly', alignItems:'center', width:'50%', height:'100%'}}>
-            <Link className='nav-link' to='/signup'>
+            <div className='nav-auth'>
+            <Link className='nav-link-b' to='/signup'>
             <h3>Sign Up</h3>
             </Link>
 
-            <Link className='nav-link' to='/login'>
+            <Link className='nav-link-b' to='/login'>
             <h3>Log In</h3>
             </Link>
             </div>
          )
       }
    }
-
-
    render(){
       return (
          <div className='nav-guest nav'>
@@ -48,11 +47,3 @@ export default class NavGuest extends Component {
       )
    }
 }
-
-// <Link className='nav-link' to='/signup'>
-// <h3>Sign Up</h3>
-// </Link>
-
-// <Link className='nav-link' to='/login'>
-// <h3>Log In</h3>
-// </Link>

@@ -1,21 +1,41 @@
 .nav {
    display: flex;
    height: 5vh;
-   background-color: rgb(194, 194, 194);
+   background-color: #9DCEFF;
    justify-content: space-evenly;
    align-items: center;
 }
 
+.nav-auth {
+   height: 100%;
+   width: 49%;
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+}
+
 .nav-link {
-   height: 80%;
-   width: 30%;
-   background-color: rgb(56, 105, 170);
+   height: 90%;
+   width: 49%;
+   background-color:white;
    display: flex;
    align-items: center;
    justify-content: center;
    text-decoration: none;
-   color:white;
-   border-radius: 5px;
+   color:dodgerblue;
+   border-radius: 2px;
    border: none;
 }
 
+.nav-link-b {
+   height: 90%;
+   width: 48%;
+   background-color:rgb(255, 255, 255);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   text-decoration: none;
+   color:dodgerblue;
+   border-radius: 2px;
+   border: none;
+}

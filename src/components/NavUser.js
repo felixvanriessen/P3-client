@@ -7,8 +7,12 @@ export default function NavUser(props) {
 
    return (
       <div className='nav-user nav'>
-         <Link to='/' className='nav-link'>HOME</Link>
-         <button className='nav-link' onClick={props.logOut}>LogOut</button>
+         <Link to='/' className='nav-link'>
+         <h3>Home</h3>
+         </Link>
+         <Link className='nav-link' onClick={props.logOut}>
+         <h3>Log Out</h3>
+         </Link>
       </div>
    )
 }

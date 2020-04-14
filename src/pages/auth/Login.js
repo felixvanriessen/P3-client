@@ -6,7 +6,10 @@ import {login} from '../../utils/auth'
 export default class Login extends Component {
    state = {
       user:{},
-      loginstatus:''
+      loginstatus:'',
+      style:{
+         border:'2px solid dodgerblue'
+      }
    }
    formHandler = (e) => {
       let formdata = {...this.state.user}
@@ -23,14 +26,19 @@ export default class Login extends Component {
          console.log(response.data.message)
          let msg = response.data.message
          if (msg === 'Logged in'){
-            this.props.history.push('/profile')
+            this.setState({style:{border:'2px solid #36a832', boxShadow:'0px 4px 10px #36a832'}})
+            setTimeout(()=>{
+               this.props.history.push('/profile')
+            }, 500)
          } else if (msg === 'Invalid credentials') {
             this.setState({
-               loginstatus:'Invalid credentials'
+               loginstatus:'Invalid credentials',
+               style:{border:'2px solid red'}
             })
          } else {
             this.setState({
-               loginstatus:'User does not exist'
+               loginstatus:'User does not exist',
+               style:{border:'2px solid red'}
             })
          }
          
@@ -42,13 +50,15 @@ export default class Login extends Component {
    render() {
       return (
          <GuestLayout>
-            <h1>Log-in Page</h1>
-            <form className='login-form' onSubmit={this.submitHandler}>
-               <input type="text" name='username' required onChange={this.formHandler} />
-               <input type="password" name='password' required onChange={this.formHandler} />
-               <button type='submit'>Log In</button>
+         <div className='auth-container'>
+            <h3>Log In</h3>
+            <form className='login-form auth-form' onSubmit={this.submitHandler}>
+               <input type="text" name='username' required onChange={this.formHandler} placeholder='username'/>
+               <input type="password" name='password' required onChange={this.formHandler} placeholder='password'/>
+               <button type='submit' style={this.state.style}>Log In</button>
             </form>
-            <h3>{this.state.loginstatus}</h3>
+            <p>{this.state.loginstatus}</p>
+         </div>
          </GuestLayout>
       )
    }

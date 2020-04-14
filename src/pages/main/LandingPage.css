@@ -1,5 +1,5 @@
 .landing-page {
-   background-image:linear-gradient(to bottom, white, rgb(162, 198, 214) 40%);
+   background-image:linear-gradient(to bottom right, rgba(93, 174, 255, 0.315), rgba(255, 29, 146, 0.205));
 }
 
 .main-header {
@@ -11,7 +11,7 @@
 }
 
 .main-header span {
-   color:rgb(61, 105, 199)
+   color:dodgerblue;
 }
 
 .search-container {

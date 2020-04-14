@@ -47,16 +47,14 @@ export default class PostCar extends Component {
    render() {
       return (
          <div className='postcar-container'>
-            <div>
-               <form onSubmit={this.postCar} onChange={this.formHandler}>
-                  <input type="text" name='name' placeholder='Brand name and model'/>
-                  <input type="text" name='price' placeholder='price'/>
+               <form className='postcar-form' onSubmit={this.postCar} onChange={this.formHandler}>
+                  <input type="text" name='name' placeholder='Brand name and model' required/>
+                  <input type="text" name='price' placeholder='price' required/>
                   <input type="text" name='kilometers' placeholder='kilometers'/>
                   <input type="text" name='year' placeholder='year'/>
-                  <input type="text" name='image' placeholder='image'/>
+                  <input type="text" name='image' placeholder='image url'/>
                   <button type='submit'>POST</button>
                </form>
-            </div>
          </div>
       )
    }

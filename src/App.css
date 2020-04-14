@@ -2,6 +2,8 @@
 @import './pages/main//LandingPage.css';
 @import './layout/Layout.css';
 @import './pages/car/CarInfo.css';
+@import './pages/auth/Auth.css';
+@import './pages/user/UserPages.css';
 
 
 
