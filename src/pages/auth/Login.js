@@ -7,9 +7,7 @@ export default class Login extends Component {
    state = {
       user:{},
       loginstatus:'',
-      style:{
-         border:'2px solid dodgerblue'
-      }
+      style:{}
    }
    formHandler = (e) => {
       let formdata = {...this.state.user}
@@ -26,7 +24,7 @@ export default class Login extends Component {
          console.log(response.data.message)
          let msg = response.data.message
          if (msg === 'Logged in'){
-            this.setState({style:{border:'2px solid #36a832', boxShadow:'0px 4px 10px #36a832'}})
+            this.setState({style:{backgroundColor:'#36a832', boxShadow:'0px 4px 10px #36a832'}})
             setTimeout(()=>{
                this.props.history.push('/profile')
             }, 500)

@@ -10,7 +10,7 @@ export default class SaleCar extends Component {
 
    removeCar = () => {
       Axios.get(`http://localhost:3004/cars/remove/${this.props.id}`)
-      .then(response=>{
+      .then(car=>{
          this.props.refresh()
          this.props.history.push('/profile')
       })
@@ -20,10 +20,10 @@ export default class SaleCar extends Component {
       return (
          <div className='car-for-sale'>
          <Link to={'/car/'+ this.props.id} className='link-car'>
-            <h3>{this.props.name}</h3>
-            <h3>{'€ '+ this.props.price}</h3>
+            <h4>{this.props.name}</h4>
+            <h4>{'€ '+ this.props.price}</h4>
          </Link>
-         <h3 onClick={this.removeCar}>delete</h3>
+         <h4 className='sale-delete' onClick={this.removeCar}>delete</h4>
          </div>
       )
    }

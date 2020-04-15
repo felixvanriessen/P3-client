@@ -6,7 +6,8 @@ import { getUser } from '../../utils/auth'
 export default class PostCar extends Component {
 
    state = {
-      newcar:{}
+      newcar:{},
+      
    }
 
    componentDidMount(){
@@ -37,21 +38,24 @@ export default class PostCar extends Component {
          },
          data:qs.stringify(this.state.newcar)
       })
-      .then(response=> {
-         console.log('success')
-         console.log(response.data)
+      .then(car=> {
+         debugger
+         this.props.history.push(`/`)
       })
-      .catch(err=>console.log(err))
+      .catch(err=>{
+         debugger
+         console.log(err)
+      })
    }
 
    render() {
       return (
          <div className='postcar-container'>
                <form className='postcar-form' onSubmit={this.postCar} onChange={this.formHandler}>
-                  <input type="text" name='name' placeholder='Brand name and model' required/>
-                  <input type="text" name='price' placeholder='price' required/>
-                  <input type="text" name='kilometers' placeholder='kilometers'/>
-                  <input type="text" name='year' placeholder='year'/>
+                  <input type="text" name='name' placeholder='brand and model' required pattern='^[a-z0-9 +-]{1,20}$' title='Alphabetic characters and Numbers only'/>
+                  <input type="text" name='price' placeholder='price' required pattern='^[0-9]{1,9}$' title='Numbers only'/>
+                  <input type="text" name='kilometers' placeholder='kilometers' pattern='^[0-9]{1,6}$' title='Numbers only'/>
+                  <input type="text" name='year' placeholder='year' pattern='^[0-9]{4}$' title='Numbers only'/>
                   <input type="text" name='image' placeholder='image url'/>
                   <button type='submit'>POST</button>
                </form>

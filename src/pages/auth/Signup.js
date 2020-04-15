@@ -10,11 +10,10 @@ export default class Signup extends Component {
       user:{},
       usernamecheck:'Sign Up',
       userlist:[],
-      style:{
-         border:'2px solid dodgerblue'
-      },
+      style:{},
       style2: {
-         border:'2px solid #9DCEFF'
+         border:'2px solid white',
+         boxShadow:'0px 2px 10px rgba(30, 143, 255, 0.301)'
       },
       style3:{
          fontSize:'2rem'
@@ -48,18 +47,23 @@ export default class Signup extends Component {
       if (count > 0) {
          this.setState({
             usernamecheck:'Username already exists',
-            style2:{border:'2px solid red'},
+            style2:{border:'2px solid red', boxShadow:'0px 2px 10px rgba(255, 0, 0, 0.5)'},
             style3:{fontSize:'1.4rem', color:'red'}
          })
       } else {
          this.setState({
             usernamecheck:'Sign Up',
-            style2:{border:'2px solid rgb(209,209,209)'},
+            style2:{border:'2px solid green', boxShadow:'0px 2px 10px rgba(0, 255, 0, 0.5)'},
             style3:{fontSize:'2rem', color:'dodgerblue'}
          })
-
       }
-
+      if (formdata.username === ''){
+         this.setState({
+            usernamecheck:'Sign Up',
+            style2:{border:'2px solid white', boxShadow:'0px 2px 10px rgba(30, 143, 255, 0.301)'},
+            style3:{fontSize:'2rem', color:'dodgerblue'}
+         })
+      }
       
    }
 
@@ -69,7 +73,7 @@ export default class Signup extends Component {
       .then((response)=>{
          this.setState({
             usernamecheck:'Welcome!',
-            style:{border:'2px solid #36a832', boxShadow:'0px 4px 10px #36a832'},
+            style:{backgroundColor:'#36a832', boxShadow:'0px 4px 10px #36a832'},
             style3:{fontSize:'1.8rem', color:'green'}
          })
          setTimeout(()=>{

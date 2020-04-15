@@ -5,7 +5,14 @@
 @import './pages/auth/Auth.css';
 @import './pages/user/UserPages.css';
 
+/* 
+dodgerblue: rgb(30 144 255) or #1E90FF
+light, blue, super light, ultra light: #5DAFFF , #1D8FFF , #9DCEFF, rgb(228, 242, 255)
+pink: #FF1D90 
 
+
+background-image:linear-gradient(to bottom right, rgb(220, 238, 255), rgb(255, 208, 232));
+*/
 
 * {
   padding:0;

@@ -18,6 +18,20 @@ export default class UserProfile extends Component {
          border:'none',
          backgroundColor:'rgba(0,0,0,0)',
          height:'1px'
+      },
+      popup:false,
+      style2:{
+         width:'100%',
+         position: 'relative',
+         bottom:'0',
+         height: '50px',
+         backgroundColor: 'rgba(228, 242, 255, 0.1)'
+      },
+      arrow:'▼',
+      style4:{
+         zIndex:'-1',
+         height:'100vh',
+         backgroundColor:"rgba(255, 255, 255, 0.01)"
       }
    }
 
@@ -108,6 +122,42 @@ export default class UserProfile extends Component {
       .catch(err=>console.log(err))
    }
 
+   postCarPopUp = () => {
+      if (this.state.popup) {
+         this.setState({
+            popup:false,
+            style2:{
+               width:'100%',
+               position: 'relative',
+               bottom:'0',
+               height: '50px',
+               backgroundColor: 'rgba(228, 242, 255, 0.1)'
+            },
+            style4:{
+               zIndex:'-1',
+               height:'100vh',
+               backgroundColor:"rgba(255, 255, 255, 0.01)"
+            }
+         })
+      } else {
+         this.setState({
+            popup:true,
+            style2:{
+               width:'100%',
+               position: 'fixed',
+               top:'80px',
+               height: '400px',
+               backgroundColor: 'rgba(157, 206, 255)'
+            },
+            style4:{
+               zIndex:'1',
+               height:'100vh',
+               backgroundColor:"rgba(0, 0, 0, 0.8)"
+            }
+         })
+      }
+   }
+
    render() {
       return (
          <UserLayout logOut = {this.logOut}>
@@ -125,18 +175,21 @@ export default class UserProfile extends Component {
                   <button type='submit' style={this.state.style}>Save Changes</button>
                </form>
             </div>
-
-            <div className='postcar-section'>
+            <div className='screen-cover' style={this.state.style4}></div>
+            <div className='postcar-section' style={this.state.style2}>
                <Link to={this.state.link} className='postcar-link' onClick={()=>{
-                  if (this.state.link === '/profile/postcar') this.setState({link:'/profile'})
-                  else this.setState({link:'/profile/postcar'})
-               }}>POST NEW CAR</Link>
+                  if (this.state.link === '/profile/postcar') this.setState({link:'/profile', arrow:'▲'})
+                  else this.setState({link:'/profile/postcar', arrow:'▼'})
+                  this.postCarPopUp()
+
+               }}>{'POST NEW CAR ' + this.state.arrow}</Link>
                <Route path='/profile/postcar' component={PostCar} />
             </div>
 
             <div className='cars-for-sale'>
                <h3>Your cars currently for sale:</h3>
-               {this.state.cars.map(car=>
+               <div className='salecar-list'>
+                  {this.state.cars.map(car=>
                   <SaleCar
                   refresh={this.reFresh}
                   id={car._id}
@@ -144,7 +197,10 @@ export default class UserProfile extends Component {
                   price={car.price}
                   />
                   )}
+               </div>
+                  
             </div>
+            
          </div>
          </UserLayout>
       )

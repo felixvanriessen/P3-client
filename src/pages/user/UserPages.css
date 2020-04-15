@@ -1,6 +1,6 @@
 .user-container {
    min-height: 95vh;
-   background-image: linear-gradient(to bottom right, rgba(93, 174, 255, 0.315), rgba(255, 29, 146, 0.205));
+   background-image:linear-gradient(to bottom right, rgba(29, 142, 255, 0.199), rgba(255, 29, 146, 0.116));
 }
 
 .user-info {
@@ -10,6 +10,8 @@
    flex-direction: column;
    justify-content: space-evenly;
    align-items: center;
+
+   margin-bottom: 20px;
 }
 
 .user-info h2 {
@@ -36,17 +38,21 @@
    width: 80%;
    height: 30px;
    background:none;
-   border:none;
+   border:2px solid rgba(255, 255, 255, 0);
    border-radius: 5px;
    font-size: 1.2rem;
    color:dodgerblue;
+   transition: 0.5s;
 }
 
+.user-edit-form input:hover {
+   background-color: rgba(255, 255, 255, 0.301);
+   border: 2px solid rgba(30, 143, 255, 0.219);
+}
 .user-edit-form input:focus {
    background-color: white;
    border: 2px solid dodgerblue;
 }
-
 .user-edit-form button {
    background: none;
    width: 80%;
@@ -66,25 +72,23 @@
    background-color: dodgerblue;
    width: 200px;
    border-radius: 5px;
+   margin:10px;
 }
 
 .postcar-section {
    display: flex;
    flex-direction: column;
    align-items: center;
-   min-height: 50px;
-   justify-content: center;
-   background-color: #9DCEFF;
-   box-shadow: 0px 6px 10px rgb(161, 161, 161);
+   justify-content: space-around;
+   /* box-shadow: 0px 6px 10px rgba(161, 161, 161, 0.438); */
+   z-index: 2;
+   transition: 0.5s;
 }
 
-
-.postcar-section:focus {
-   background-color: dodgerblue;
-}
 .postcar-container {
    width: 100%;
    height: 250px;
+   transition:0.5s;
 }
 
 .postcar-form {
@@ -117,12 +121,19 @@
 }
 
 .cars-for-sale {
-   margin-top: 40px;
+   margin-top: 20px;
    display: flex;
    flex-direction: column;
    justify-content: space-evenly;
    align-items: center;
-   min-height: 200px;
+}
+
+.salecar-list {
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items:center;
+   justify-content: space-evenly;
 }
 
 .cars-for-sale h3 {
@@ -132,17 +143,43 @@
 .car-for-sale {
    width: 80%;
    border-radius:5px;
-   background-color: rgb(228, 242, 255);
+   background-color: dodgerblue;
    display: flex;
    justify-content: space-around;
    align-items: center;
+   /* box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.411); */
+   margin: 10px;
 }
 
 .link-car {
+   height: 100%;
    display: flex;
    justify-content: space-evenly;
    align-items: center;
    width: 70%;
    text-decoration: none;
-   color: dodgerblue;
+   color:white;
+}
+
+
+.sale-delete {
+   color:white;
+   text-align: center;
+   background-color: red;
+   height: 100%;
+   width: 30%;
+   border-bottom-right-radius: 5px;
+   border-top-right-radius: 5px;
+}
+
+.sale-delete:hover {
+   cursor: pointer;
+}
+
+.screen-cover {
+   position: fixed;
+   top:0;
+   width: 100%;
+   height: 0vh;
+   transition:0.5s;
 }
