@@ -86,8 +86,8 @@ export default class UserProfile extends Component {
       e.preventDefault()
       axios.post(`${process.env.REACT_APP_API}/user/edit`, this.state.useredit, {withCredentials: true})
       .then(response=>{
-         setUser(response.data)
-         console.log(getUser())
+         let updatedUser = response.data
+         setUser(updatedUser)
          this.setState({
             user:response.data,
             useredit:response.data,
