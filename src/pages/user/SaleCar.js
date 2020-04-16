@@ -9,7 +9,7 @@ export default class SaleCar extends Component {
    }
 
    removeCar = () => {
-      Axios.get(`http://localhost:3004/cars/remove/${this.props.id}`)
+      Axios.get(`${process.env.REACT_APP_API}/cars/remove/${this.props.id}`)
       .then(car=>{
          this.props.refresh()
          this.props.history.push('/profile')

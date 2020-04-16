@@ -11,7 +11,7 @@ export default class LandingPage extends Component {
       resultsL:0
    }
    componentDidMount(){
-      axios.get(`http://localhost:3004/cars/all`, {withCredentials: true})
+      axios.get(`${process.env.REACT_APP_API}/cars/all`, {withCredentials: true})
       .then(response=>{
          this.setState({
             cars:response.data,

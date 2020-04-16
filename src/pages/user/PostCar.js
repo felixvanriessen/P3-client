@@ -31,7 +31,7 @@ export default class PostCar extends Component {
    postCar= () => {
       axios({
          method:"POST",
-         url:'http://localhost:3004/cars/new',
+         url:`${process.env.REACT_APP_API}/cars/new`,
          withCredentials:true,
          headers:{
             "content-type":"application/x-www-form-urlencoded"

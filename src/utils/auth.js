@@ -2,7 +2,7 @@ import Axios from 'axios'
 import qs from 'qs'
 
 const axiosauth = Axios.create({
-   baseURL:'http://localhost:3004/auth/',
+   baseURL:`${process.env.REACT_APP_API}/auth/`,
    withCredentials: true,
    headers:{
       "content-type":"application/x-www-form-urlencoded"

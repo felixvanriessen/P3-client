@@ -47,12 +47,13 @@ export default class UserProfile extends Component {
       if (userprofile) {
          axios({
             method:'GET',
-            url:`http://localhost:3004/cars/owned/${userprofile._id}`
+            url:`${process.env.REACT_APP_API}/cars/owned/${userprofile._id}`
          })
          .then(response=>{
             axios({
                method:'GET',
-               url:`http://localhost:3004/msg/get/${userprofile._id}`
+               
+               url:`${process.env.REACT_APP_API}/msg/get/${userprofile._id}`
             })
             .then(response2=>{
                let messages = response2.data.reverse()
@@ -73,7 +74,7 @@ export default class UserProfile extends Component {
    }
 
    logOut = () => {
-      axios.get('http://localhost:3004/auth/logout')
+      axios.get(`${process.env.REACT_APP_API}/auth/logout`)
       .then(response=>{
          logout()
          this.props.history.push('/')
@@ -83,7 +84,7 @@ export default class UserProfile extends Component {
 
    editUser = (e) => {
       e.preventDefault()
-      axios.post('http://localhost:3004/user/edit', this.state.useredit, {withCredentials: true})
+      axios.post(`${process.env.REACT_APP_API}/user/edit`, this.state.useredit, {withCredentials: true})
       .then(response=>{
          setUser(response.data)
          console.log(getUser())
@@ -129,7 +130,7 @@ export default class UserProfile extends Component {
    reFresh = () => {
       axios({
          method:'GET',
-         url:`http://localhost:3004/cars/owned/${this.state.user._id}`
+         url:`${process.env.REACT_APP_API}/cars/owned/${this.state.user._id}`
       })
       .then(response=>{
          this.setState({

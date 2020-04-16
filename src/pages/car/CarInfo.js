@@ -21,7 +21,7 @@ export default class CarInfo extends Component {
    }
 
    componentDidMount(){
-      Axios.get(`http://localhost:3004/cars/find/${this.props.match.params.id}`)
+      Axios.get(`${process.env.REACT_APP_API}/cars/find/${this.props.match.params.id}`)
       .then(carfound=>{
          this.setState({
             car:carfound.data
@@ -60,10 +60,11 @@ export default class CarInfo extends Component {
          }
       })
    }
+   
    sendMsg = () => {
       Axios({
          method:'POST',
-         url:`http://localhost:3004/msg/new`,
+         url:`${process.env.REACT_APP_API}/msg/new`,
          withCredentials:true,
          headers: {
             "content-type":"application/x-www-form-urlencoded"

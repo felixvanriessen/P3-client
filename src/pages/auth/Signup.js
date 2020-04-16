@@ -22,7 +22,7 @@ export default class Signup extends Component {
    }
 
    componentDidMount(){
-      Axios.get('http://localhost:3004/auth/userlist')
+      Axios.get(`${process.env.REACT_APP_API}/auth/userList`)
       .then(response=>{
          this.setState({
             userlist:response.data
