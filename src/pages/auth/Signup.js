@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import GuestLayout from '../../layout/GuestLayout'
 import {signup} from '../../utils/auth'
 import Axios from 'axios'
+import env from 'dotenv'
 
 
 export default class Signup extends Component {

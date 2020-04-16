@@ -7,7 +7,8 @@ import CarComponent from './CarComponent'
 export default class LandingPage extends Component {
    state={
       cars:[],
-      carsfound:[]
+      carsfound:[],
+      resultsL:0
    }
    componentDidMount(){
       axios.get(`http://localhost:3004/cars/all`, {withCredentials: true})
@@ -113,7 +114,12 @@ export default class LandingPage extends Component {
          })
       }
    }
-
+   results = () => {
+      if (this.state.carsfound.length !== this.state.cars.length) {
+         return `${this.state.carsfound.length} results`
+      }
+   }
+   
    render(){
       return (
          <GuestLayout >
@@ -124,7 +130,10 @@ export default class LandingPage extends Component {
                <h4>With over {this.state.cars.length - 1} cars to choose from</h4>
             </div>
             <div className='search-container'>
-               <input type="text" onChange={this.searchCars} placeholder='Find a car for you'/>
+               <input type="text" onChange={this.searchCars} placeholder='Find the car for you'/>
+               <p className='results-length'>{
+                  this.results()
+               }</p>
                <div className='sort-options'>
                   <button onClick={this.sortByName} >Name</button>
                   <button onClick={this.sortByPrice} >Price</button>

@@ -9,7 +9,6 @@ export default class NavGuest extends Component {
    }
    componentDidMount(){
       let user = getUser()
-      console.log(user)
       if (user) this.setState({auth:true, username:user.username})
       else this.setState({auth:false})
    }

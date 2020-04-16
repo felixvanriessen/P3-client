@@ -10,7 +10,7 @@ export default function CarComponent(props) {
          <div className='car-comp-text'>
             <h3>{props.name}</h3>
             <h5>{props.km} km</h5>
-            <h5>price: {props.price} euro</h5>
+            <h5>€ {props.price}</h5>
             <p>{props.owner}</p>
          </div>
       </Link>

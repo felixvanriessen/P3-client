@@ -32,7 +32,14 @@ export default class UserProfile extends Component {
          zIndex:'-1',
          height:'100vh',
          backgroundColor:"rgba(255, 255, 255, 0.01)"
-      }
+      },
+      msgs:[],
+      style5:{
+         height:'0px',
+         overflow:'hidden'
+      },
+      msgsopen:false,
+      msgsarrow:'▼'
    }
 
    componentDidMount(){
@@ -43,11 +50,20 @@ export default class UserProfile extends Component {
             url:`http://localhost:3004/cars/owned/${userprofile._id}`
          })
          .then(response=>{
-            this.setState({
-               user:{...userprofile},
-               useredit:{...userprofile},
-               cars:response.data
+            axios({
+               method:'GET',
+               url:`http://localhost:3004/msg/get/${userprofile._id}`
             })
+            .then(response2=>{
+               let messages = response2.data.reverse()
+               this.setState({
+                  user:{...userprofile},
+                  useredit:{...userprofile},
+                  cars:response.data,
+                  msgs:messages
+               })
+            })
+            .catch(err=>console.log(err))
          })
          .catch(err=>console.log(err))
 
@@ -70,6 +86,7 @@ export default class UserProfile extends Component {
       axios.post('http://localhost:3004/user/edit', this.state.useredit, {withCredentials: true})
       .then(response=>{
          setUser(response.data)
+         console.log(getUser())
          this.setState({
             user:response.data,
             useredit:response.data,
@@ -144,8 +161,8 @@ export default class UserProfile extends Component {
             popup:true,
             style2:{
                width:'100%',
-               position: 'fixed',
-               top:'80px',
+               position: 'relative',
+               top:'0px',
                height: '400px',
                backgroundColor: 'rgba(157, 206, 255)'
             },
@@ -154,6 +171,28 @@ export default class UserProfile extends Component {
                height:'100vh',
                backgroundColor:"rgba(0, 0, 0, 0.8)"
             }
+         })
+      }
+   }
+
+   openMsgs = () => {
+      if (!this.state.msgsopen){
+         this.setState({
+            style5:{
+               height:'50vh',
+               overflow:'scroll'
+            },
+            msgsopen:true,
+            msgsarrow:'▲'
+         })
+      } else {
+         this.setState({
+            style5:{
+               height:'0px',
+               overflow:'hidden'
+            },
+            msgsopen:false,
+            msgsarrow:'▼'
          })
       }
    }
@@ -185,6 +224,16 @@ export default class UserProfile extends Component {
                }}>{'POST NEW CAR ' + this.state.arrow}</Link>
                <Route path='/profile/postcar' component={PostCar} />
             </div>
+            <div className='msgs-container'>
+               <h4 onClick={this.openMsgs}> {this.state.msgs.length} Messages {this.state.msgsarrow}</h4>
+               <div className='msgs' style={this.state.style5}>
+                  {this.state.msgs.map(msg=>(
+                     <div className='msg'>
+                     <p>{msg.msg}</p>
+                     </div>
+                     ))}
+               </div>
+            </div>
 
             <div className='cars-for-sale'>
                <h3>Your cars currently for sale:</h3>
@@ -200,7 +249,6 @@ export default class UserProfile extends Component {
                </div>
                   
             </div>
-            
          </div>
          </UserLayout>
       )

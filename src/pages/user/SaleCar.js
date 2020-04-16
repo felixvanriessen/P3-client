@@ -19,11 +19,13 @@ export default class SaleCar extends Component {
    render(){
       return (
          <div className='car-for-sale'>
-         <Link to={'/car/'+ this.props.id} className='link-car'>
-            <h4>{this.props.name}</h4>
-            <h4>{'€ '+ this.props.price}</h4>
-         </Link>
-         <h4 className='sale-delete' onClick={this.removeCar}>delete</h4>
+            <Link to={'/car/'+ this.props.id} className='link-car'>
+               <h4>{this.props.name}</h4>
+               <h4>{'€ '+ this.props.price}</h4>
+            </Link>
+            <div className='sale-delete'>
+               <h4 onClick={this.removeCar}>delete</h4>
+            </div>
          </div>
       )
    }
