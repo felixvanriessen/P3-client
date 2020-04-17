@@ -6,20 +6,21 @@ import qs from 'qs'
 export default class CarInfo extends Component {
    state = {
       car:{
-         owner:{}
+         owner:{} //owner of car on the page
       },
-      style:{
+      style:{ //style for message-container
          visibility:'collapse',
          height:'0px'
       },
-      open:false,
-      msgobject:{
+      open:false, //message-container status
+      msgobject:{ //message object
          msg_to:'',
          msg:''
       },
-      btntext:'Send'
+      btntext:'Send' //message button text
    }
 
+   //get details for car
    componentDidMount(){
       Axios.get(`${process.env.REACT_APP_API}/cars/find/${this.props.match.params.id}`)
       .then(carfound=>{
@@ -29,6 +30,7 @@ export default class CarInfo extends Component {
       })
    }
 
+   //open message section using css
    openmsg = () => {
       if (!this.state.open) {
          this.setState({
@@ -52,6 +54,7 @@ export default class CarInfo extends Component {
       }
    }
 
+   //update state.msgobject with input values
    msgHandler = (e) => {
       this.setState({
          msgobject:{
@@ -61,6 +64,7 @@ export default class CarInfo extends Component {
       })
    }
    
+   //send message
    sendMsg = () => {
       Axios({
          method:'POST',

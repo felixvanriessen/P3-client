@@ -9,39 +9,40 @@ import SaleCar from './SaleCar'
 
 export default class UserProfile extends Component {
    state = {
-      user:{},
-      useredit:{},
-      link:'/profile/postcar',
-      cars:[],
-      style:{
+      user:{}, //user 
+      useredit:{}, //user while editing
+      link:'/profile/postcar', //dynamic url
+      cars:[], //owned cars
+      style:{ //style for user editing 'save changes' button
          color:'rgba(180,180,180,0)',
          border:'none',
          backgroundColor:'rgba(0,0,0,0)',
          height:'1px'
       },
-      popup:false,
-      style2:{
+      popup:false, //post car section status
+      style2:{ //style for post car section
          width:'100%',
          position: 'relative',
          bottom:'0',
          height: '50px',
          backgroundColor: 'rgba(228, 242, 255, 0.1)'
       },
-      arrow:'▼',
-      style4:{
+      arrow:'▼', //arrow symbol for post car button
+      style4:{ //style for screen background darkening
          zIndex:'-1',
          height:'100vh',
          backgroundColor:"rgba(255, 255, 255, 0.01)"
       },
-      msgs:[],
-      style5:{
+      msgs:[], //messages for user
+      style5:{ //style for messages section
          height:'0px',
          overflow:'hidden'
       },
-      msgsopen:false,
-      msgsarrow:'▼'
+      msgsopen:false, //messages section status
+      msgsarrow:'▼' //arrow symbol for messages button
    }
 
+   //get owned cars and messages for user if user is logged in, else redirect landingpage
    componentDidMount(){
       let userprofile = getUser()
       if (userprofile) {
@@ -72,6 +73,7 @@ export default class UserProfile extends Component {
       }
    }
 
+   //logout in api and client
    logOut = () => {
       axios.get(`${process.env.REACT_APP_API}/auth/logout`)
       .then(response=>{
@@ -81,6 +83,7 @@ export default class UserProfile extends Component {
       .catch(err=>console.log(err))
    }
 
+   //submit edit for user details
    editUser = (e) => {
       e.preventDefault()
       axios.post(`${process.env.REACT_APP_API}/user/edit`, this.state.useredit, {withCredentials: true})
@@ -101,6 +104,7 @@ export default class UserProfile extends Component {
       })
    }
 
+   //update state.useredit with input values
    formHandler = (e) => {
       let edit = {...this.state.useredit}
       edit[e.target.name] = e.target.value
@@ -127,6 +131,7 @@ export default class UserProfile extends Component {
       })
    }
    
+   //refresh list of owned cars (used after deletion of cars)
    reFresh = () => {
       axios({
          method:'GET',
@@ -140,6 +145,7 @@ export default class UserProfile extends Component {
       .catch(err=>console.log(err))
    }
 
+   //show post car form using CSS
    postCarPopUp = () => {
       if (this.state.popup) {
          this.setState({
@@ -176,6 +182,7 @@ export default class UserProfile extends Component {
       }
    }
 
+   //show messages section using CSS
    openMsgs = () => {
       if (!this.state.msgsopen){
          this.setState({

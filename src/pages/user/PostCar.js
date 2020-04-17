@@ -6,10 +6,10 @@ import { getUser } from '../../utils/auth'
 export default class PostCar extends Component {
 
    state = {
-      newcar:{},
-      
+      newcar:{}, //car object to add to database
    }
 
+   //set 'owner' property of state.newcar to the '_id'(ObjectId) of the user
    componentDidMount(){
       let carowner = getUser()
       let car = {
@@ -20,6 +20,7 @@ export default class PostCar extends Component {
       })
    }
 
+   //update state.newcar with input values
    formHandler = (e) => {
       let car = {...this.state.newcar}
       car[e.target.name] = e.target.value
@@ -27,7 +28,8 @@ export default class PostCar extends Component {
          newcar:car
       })
    }
-   
+
+   //submit new car
    postNewCar = (e) => {
       e.preventDefault()
       axios({
@@ -40,7 +42,6 @@ export default class PostCar extends Component {
          data:qs.stringify(this.state.newcar)
       })
       .then(response => {
-         console.log('post car success')
          this.props.history.push('/profile')
       })
       .catch(err=>console.log(err))

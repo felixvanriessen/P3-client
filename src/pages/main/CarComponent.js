@@ -2,6 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 
 export default function CarComponent(props) {
+   //renders cards for each car
    return (
       <Link to={`/car/${props.id}`} className='car-comp'>
          <div className='car-comp-img'>

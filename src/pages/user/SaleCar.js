@@ -8,6 +8,7 @@ export default class SaleCar extends Component {
       super(props)
    }
 
+   //delete car from the database and (and refresh owned cars list)
    removeCar = () => {
       Axios.get(`${process.env.REACT_APP_API}/cars/remove/${this.props.id}`)
       .then(car=>{

@@ -6,21 +6,21 @@ import env from 'dotenv'
 
 
 export default class Signup extends Component {
-
    state = {
       user:{},
-      usernamecheck:'Sign Up',
-      userlist:[],
-      style:{},
-      style2: {
+      usernamecheck:'Sign Up', //page title and 'username exists' message
+      userlist:[], //list of existing users
+      style:{}, //style for button
+      style2: { //style for username input
          border:'2px solid white',
          boxShadow:'0px 2px 10px rgba(30, 143, 255, 0.301)'
       },
-      style3:{
+      style3:{ // style for page title (username check)
          fontSize:'2rem'
       }
    }
 
+   //get list of existing users for username check
    componentDidMount(){
       Axios.get(`${process.env.REACT_APP_API}/auth/userList`)
       .then(response=>{
@@ -31,6 +31,7 @@ export default class Signup extends Component {
       .catch(err=>console.log(err))
    }
    
+   //update state.user with input values
    formHandler = (e) => {
       let formdata = {...this.state.user}
       formdata[e.target.name] = e.target.value
@@ -68,6 +69,7 @@ export default class Signup extends Component {
       
    }
 
+   //submit signup
    submitHandler = (e) => {
       e.preventDefault()
       signup(this.state.user)

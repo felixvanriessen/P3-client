@@ -1,6 +1,7 @@
 import Axios from 'axios'
 import qs from 'qs'
 
+//default axios call
 const axiosauth = Axios.create({
    baseURL:`${process.env.REACT_APP_API}/auth/`,
    withCredentials: true,
@@ -9,6 +10,7 @@ const axiosauth = Axios.create({
    }
 })
 
+//login and setUser
 export const login = (user) => {
    return axiosauth({
       method:'POST',
@@ -23,6 +25,7 @@ export const login = (user) => {
    })
 }
 
+//signup and setUser
 export const signup = (user) => {
    return axiosauth({
       method:'POST',
@@ -34,14 +37,16 @@ export const signup = (user) => {
    })
 }
 
+//set User to localStorage
 export const setUser = (user) => {
    window.localStorage.setItem('user', JSON.stringify(user))
 }
-
+//get User from localStorage
 export const getUser = () => {
    return JSON.parse(window.localStorage.getItem('user'))
 }
 
+//remove User from localStorage
 export const logout = () => {
    window.localStorage.removeItem('user')
 }

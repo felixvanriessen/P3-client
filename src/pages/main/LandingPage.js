@@ -6,10 +6,12 @@ import CarComponent from './CarComponent'
 
 export default class LandingPage extends Component {
    state={
-      cars:[],
-      carsfound:[],
-      resultsL:0
+      cars:[], //all cars
+      carsfound:[], //cars matching search results
+      resultsL:0 //number of cars matching search results
    }
+
+   //get all cars from database
    componentDidMount(){
       axios.get(`${process.env.REACT_APP_API}/cars/all`, {withCredentials: true})
       .then(response=>{
@@ -18,9 +20,9 @@ export default class LandingPage extends Component {
             carsfound:response.data
          })
       })
-      .catch(err=>console.log(err))
    }
 
+   //update state.carsfound with cars matching input values
    searchCars = (e) => {
       let foundcars = this.state.cars.filter(car=>{
          if (car.name){
@@ -32,6 +34,7 @@ export default class LandingPage extends Component {
       })
    }
 
+   //sort cars by price
    sortByPrice = () => {
       if (this.state.sortprice){
          let cars = this.state.carsfound.sort((a,b)=>{
@@ -52,6 +55,7 @@ export default class LandingPage extends Component {
       }
    }
 
+   //sort cars by year
    sortByYear = () => {
       if (this.state.sortyear){
          let cars = this.state.carsfound.sort((a,b)=>{
@@ -71,7 +75,8 @@ export default class LandingPage extends Component {
          })
       }
    }
-
+   
+   ////sort cars by name
    sortByName = () => {
       if (this.state.sortname){
          let cars = this.state.carsfound.sort((a,b)=>{
@@ -95,6 +100,8 @@ export default class LandingPage extends Component {
          })
       }
    }
+
+   //sort cars by kilometers
    sortByKM = () => {
       if (this.state.sortkm){
          let cars = this.state.carsfound.sort((a,b)=>{
@@ -114,6 +121,8 @@ export default class LandingPage extends Component {
          })
       }
    }
+
+   //count number of cars matching search results
    results = () => {
       if (this.state.carsfound.length !== this.state.cars.length) {
          return `${this.state.carsfound.length} results`

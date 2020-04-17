@@ -5,10 +5,12 @@ import {login} from '../../utils/auth'
 
 export default class Login extends Component {
    state = {
-      user:{},
-      loginstatus:'',
-      style:{}
+      user:{}, //login user body
+      loginstatus:'', //login status message
+      style:{} //style for button
    }
+
+   //update state.user with input values
    formHandler = (e) => {
       let formdata = {...this.state.user}
       formdata[e.target.name] = e.target.value
@@ -17,6 +19,7 @@ export default class Login extends Component {
       })
    }
 
+   //submit login
    submitHandler = (e) => {
       e.preventDefault()
       login(this.state.user)
