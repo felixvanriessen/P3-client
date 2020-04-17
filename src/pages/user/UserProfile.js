@@ -98,6 +98,7 @@ export default class UserProfile extends Component {
       .then(response=>{
          let updatedUser = response.data
          setUser(updatedUser)
+         console.log(updatedUser)
          this.setState({
             user:response.data,
             useredit:response.data,
@@ -109,6 +110,7 @@ export default class UserProfile extends Component {
             }
          })
       })
+      .catch(err=>console.log(err))
    }
 
    //update state.useredit with input values
