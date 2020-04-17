@@ -27,26 +27,9 @@ export default class PostCar extends Component {
          newcar:car
       })
    }
-
-   postCar = () => {
-      axios({
-         method:"POST",
-         url:`${process.env.REACT_APP_API}/cars/new`,
-         withCredentials:true,
-         headers:{
-            "content-type":"application/x-www-form-urlencoded"
-         },
-         data:qs.stringify(this.state.newcar)
-      })
-      .then(car=> {
-         this.props.history.push(`/profile`)
-      })
-      .catch(err=>{
-         console.log(err)
-      })
-   }
-
-   postNewCar = () => {
+   
+   postNewCar = (e) => {
+      e.preventDefault()
       axios({
          method:'post',
          url:`${process.env.REACT_APP_API}/cars/new`,
