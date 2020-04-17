@@ -42,7 +42,7 @@ export default class PostCar extends Component {
          data:qs.stringify(this.state.newcar)
       })
       .then(response => {
-         this.props.history.push('/profile')
+         this.props.history.push(`/car/${response.data._id}`)
       })
       .catch(err=>console.log(err))
    }
