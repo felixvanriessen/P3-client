@@ -52,7 +52,6 @@ export default class UserProfile extends Component {
          .then(response=>{
             axios({
                method:'GET',
-               
                url:`${process.env.REACT_APP_API}/msg/get/${userprofile._id}`
             })
             .then(response2=>{

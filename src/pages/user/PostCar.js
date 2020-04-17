@@ -28,7 +28,7 @@ export default class PostCar extends Component {
       })
    }
 
-   postCar= () => {
+   postCar = () => {
       axios({
          method:"POST",
          url:`${process.env.REACT_APP_API}/cars/new`,
@@ -46,10 +46,27 @@ export default class PostCar extends Component {
       })
    }
 
+   postNewCar = () => {
+      axios({
+         method:'post',
+         url:`${process.env.REACT_APP_API}/cars/new`,
+         withCredentials:true,
+         headers:{
+            "content-type":"application/x-www-form-urlencoded"
+         },
+         data:qs.stringify(this.state.newcar)
+      })
+      .then(response => {
+         console.log('post car success')
+         this.props.history.push('/profile')
+      })
+      .catch(err=>console.log(err))
+   }
+
    render() {
       return (
          <div className='postcar-container'>
-               <form className='postcar-form' onSubmit={this.postCar} onChange={this.formHandler}>
+               <form className='postcar-form' onSubmit={this.postNewCar} onChange={this.formHandler}>
                   <input type="text" name='name' placeholder='brand and model' required pattern='^[a-z0-9A-Z +-]{1,20}$' title='Alphabetic characters and Numbers only'/>
                   <input type="text" name='price' placeholder='price' required pattern='^[0-9]{1,9}$' title='Numbers only'/>
                   <input type="text" name='kilometers' placeholder='kilometers' pattern='^[0-9]{1,6}$' title='Numbers only'/>
