@@ -24,7 +24,6 @@ export default class Login extends Component {
       e.preventDefault()
       login(this.state.user)
       .then((response)=>{
-         console.log(response.data.message)
          let msg = response.data.message
          if (msg === 'Logged in'){
             this.setState({style:{backgroundColor:'#36a832', boxShadow:'0px 4px 10px #36a832'}})

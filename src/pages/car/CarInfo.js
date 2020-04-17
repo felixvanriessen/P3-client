@@ -24,7 +24,6 @@ export default class CarInfo extends Component {
    componentDidMount(){
       Axios.get(`${process.env.REACT_APP_API}/cars/find/${this.props.match.params.id}`)
       .then(carfound=>{
-         console.log(carfound)
          this.setState({
             car:carfound.data
          })
