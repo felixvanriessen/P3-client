@@ -50,3 +50,41 @@
    transition: 0.3s;
    border: 2px solid white;
 }
+
+@media screen and (min-width:600px) {
+   .auth-container h3 {
+      font-size:3rem;
+   }
+
+   .auth-form input {
+      width: 50%;
+      height: 40px;
+      font-size:1.6rem;
+   }
+
+   .auth-form button {
+      height: 60px;
+      width: 160px;
+      font-size: 1.8rem;
+      border-radius: 14px;
+   }
+}
+
+@media screen and (min-width:1200px) {
+   .auth-container h3 {
+      font-size: 4rem;
+   }
+
+   .auth-form input {
+      width: 40%;
+      height: 50px;
+      font-size:2rem;
+   }
+
+   .auth-form button {
+      height: 60px;
+      width: 180px;
+      font-size: 2rem;
+      border-radius: 18px;
+   }
+}

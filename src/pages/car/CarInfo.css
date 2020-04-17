@@ -25,9 +25,10 @@
 }
 .car-info-b {
    display: flex;
-   width: 80%;
+   flex-direction: column;
+   width: 70%;
    justify-content: space-evenly;
-   align-items: center;
+   align-items: left;
    font-size: 1.2rem;
 }
 
@@ -134,3 +135,59 @@
 }
 
 
+@media screen and (min-width:600px) {
+   .car-info-container img {
+      max-height: 600px;
+   }
+
+   .car-owner-info {
+      font-size: 1.6rem;
+   }
+
+   .car-owner-info h4 {
+      font-size: 2rem;
+   }
+
+   .car-info h2 {
+      font-size: 2.4rem;
+   }
+   .car-info-b {
+      font-size: 1.6rem;
+      flex-direction: row;
+      width:90%;
+   }
+   
+   .car-info span {
+      font-size: 2rem;
+   }
+
+
+
+   .owner-msg textarea {
+      font-size: 1.4rem;
+   }
+
+   .owner-msg h3 {
+      font-size: 1.6rem;
+   }
+}
+
+@media screen and (min-width:1200px) {
+   .car-info-container img {
+      max-height: 700px;
+   }
+
+
+
+
+
+
+
+
+   .owner-msg textarea {
+      font-size: 1.8rem;
+   }
+   .owner-msg h3 {
+      font-size: 1.8rem;
+   }
+}

@@ -228,3 +228,68 @@
    padding-top: 5px;
    padding-bottom: 5px;
 }
+
+@media screen and (min-width:600px){
+   .user-info {
+      height: 500px;
+   }
+   .user-info h2 {
+      font-size: 2.8rem;
+   }
+   .user-edit-form {
+      font-size: 1.4rem;
+   }
+   .user-edit-form input {
+      font-size: 1.8rem;
+   }
+
+   .user-edit-form button {
+      width:60%;
+   }
+
+   .postcar-link {
+      font-size: 1.8rem;
+      width: 300px;
+      margin:20px;
+   }
+
+   .msg {
+      margin-top:20px;
+      border-radius: 10px;
+      width: 80%;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      font-size: 1.4rem;
+   }
+
+   .msgs-container {
+      margin-top:40px;
+      margin-bottom: 40px;
+      font-size: 1.4rem;
+   }
+
+   .car-for-sale {
+      width: 80%;
+      height: 60px;
+      margin: 10px;
+      font-size: 1.4rem;
+   }
+}
+
+@media screen and (min-width:1200px){
+   .user-info h2 {
+      font-size: 3rem;
+   }
+   .user-edit-form {
+      font-size: 1.8rem;
+   }
+   .user-edit-form input {
+      font-size: 1.8rem;
+   }
+   .user-edit-form button {
+      width:40%;
+   }
+   .car-for-sale {
+      width: 60%;
+   }
+}

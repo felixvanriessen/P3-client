@@ -105,3 +105,41 @@
 
 
 
+@media screen and (min-width:600px) {
+   .main-header {
+      font-size:1.6rem;
+   }
+
+   .sort-options button {
+   border: 2px solid white;
+   border-radius: 5px;
+   width: 120px;
+   height: 30px;
+   font-size:1.4rem;
+   }
+
+   .search-container input {
+      font-size:1.4rem;
+      width:60%;
+   }
+
+   .car-comp {
+      width: 80%;
+      height: 200px;
+   }
+
+   .car-comp-text {
+      font-size: 1.4rem;
+   }
+}
+
+@media screen and (min-width:1200px) {
+   .main-header {
+      font-size:2rem;
+   }
+   .car-comp {
+      width: 60%;
+   }
+
+}
+
